@@ -30,19 +30,21 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Sotecsis</b>Admin</a>
+    <img style="width:100%" src="img/logo.png" alt="">
+    <!-- <a href=""><b>Sotecsis</b>Admin</a> -->
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Inicio de Sesión</p>
 
-    <form action="../../index2.html" method="post">
+    <form action="{{url('ingresar')}}" method="post">
+        {!!csrf_field()!!}
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Correo">
+        <input type="email" name="correo" class="form-control" placeholder="Correo">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Contraseña">
+        <input type="password" name="pass" class="form-control" placeholder="Contraseña">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">

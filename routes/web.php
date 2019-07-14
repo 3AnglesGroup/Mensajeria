@@ -13,6 +13,7 @@
 
 Route::get('inicio', function () {return view('index');});
 Route::get('/', function () {return view('login');});
+Route::post('ingresar','UserController@validar');
 
 Auth::routes();
 
