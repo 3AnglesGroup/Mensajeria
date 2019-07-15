@@ -21,9 +21,9 @@ class UsersTableSeeder extends Seeder
 
         $user = new User();
         $user->name = 'Yeisemberth';
-        $user->email = 'operaciones.encargo@gmail.com';
+        $user->email = 'gerencia@encargomensajeria.com';
         $user->rol = 'Admin';
-        $user->password = bcrypt('qwe123');
+        $user->password = bcrypt('EMgerencia2019');
         $user->save();
     }
 }
