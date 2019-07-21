@@ -20,3 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('paquetes','PaqueteController@index');
 Route::post('paquete','PaqueteController@crear');
 Route::get('paquete/{id}','PaqueteController@detalle');
+
+//Cliente
+Route::post('cliente','ClienteController@store');
+

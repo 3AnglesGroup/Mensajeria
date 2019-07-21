@@ -32,6 +32,11 @@ let router = new Router({
            path:'/paquete-detalle/:id',
             name:'/paquete-detalle',
             component: require('./paquete/Detalle').default
+        },
+        {
+            path: '/cliente-crear',
+            name: '/cliente-crear',
+            component: require('./cliente/Crear').default
         }
     ],
     // mode:'history'
@@ -42,6 +47,8 @@ Vue.component('dashboard', require('./dashboard/Index.vue').default);
 Vue.component('paquete-index', require('./paquete/Index.vue').default);
 Vue.component('paquete-crear', require('./paquete/Crear.vue').default);
 Vue.component('paquete-detalle', require('./paquete/Detalle.vue').default);
+//Cliente
+Vue.component('cliente-crear', require('./cliente/Crear.vue').default);
 
 
 
