@@ -236,7 +236,7 @@ export default {
     crearCliente() {
       this.enviando = "true";
       axios
-        .post("/api/cliente/", this.form)
+        .post("/api/cliente", this.form)
         .then(res => {
           toastr.success("Se creó el paquete correctamente");
           console.log(res.data);

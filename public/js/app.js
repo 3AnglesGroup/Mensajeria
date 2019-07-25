@@ -1937,7 +1937,7 @@ toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
       var _this = this;
 
       this.enviando = "true";
-      axios.post("/api/cliente/", this.form).then(function (res) {
+      axios.post("/api/cliente", this.form).then(function (res) {
         toastr__WEBPACK_IMPORTED_MODULE_0___default.a.success("Se creó el paquete correctamente");
         console.log(res.data);
         _this.form = {
