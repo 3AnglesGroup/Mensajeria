@@ -2976,15 +2976,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
   closeButton: true,
@@ -56331,37 +56322,6 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group col-md-6" }, [
                       _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                        _vm._v("Detalles o ficha técnica del producto")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.detalle,
-                            expression: "form.detalle"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          required: "",
-                          placeholder: "Ingresar detalle"
-                        },
-                        domProps: { value: _vm.form.detalle },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.form, "detalle", $event.target.value)
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group col-md-6" }, [
-                      _c("label", { attrs: { for: "exampleInputEmail1" } }, [
                         _vm._v("Propietario")
                       ]),
                       _vm._v(" "),
@@ -56500,8 +56460,8 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group col-md-6" }, [
-                      _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-                        _vm._v("Valor")
+                      _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+                        _vm._v("Detalles")
                       ]),
                       _vm._v(" "),
                       _c("input", {
@@ -56509,24 +56469,22 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.form.valor,
-                            expression: "form.valor"
+                            value: _vm.form.detalle,
+                            expression: "form.detalle"
                           }
                         ],
                         staticClass: "form-control",
                         attrs: {
-                          type: "number",
-                          onkeyup:
-                            "javascript:this.value = this.value.replace(/[.,,]/,'');",
-                          placeholder: "Ingrese valor"
+                          required: "",
+                          placeholder: "Ingresar detalle"
                         },
-                        domProps: { value: _vm.form.valor },
+                        domProps: { value: _vm.form.detalle },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.$set(_vm.form, "valor", $event.target.value)
+                            _vm.$set(_vm.form, "detalle", $event.target.value)
                           }
                         }
                       })
@@ -56534,7 +56492,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group col-md-12" }, [
                       _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-                        _vm._v("Descripcion")
+                        _vm._v("Ficha técnica del producto")
                       ]),
                       _vm._v(" "),
                       _c("textarea", {

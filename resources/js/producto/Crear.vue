@@ -50,15 +50,7 @@
                       placeholder="Ingresar nombres"
                     />
                   </div>
-                  <div class="form-group col-md-6">
-                    <label for="exampleInputEmail1">Detalles o ficha técnica del producto</label>
-                    <input
-                      v-model="form.detalle"
-                      class="form-control"
-                      required
-                      placeholder="Ingresar detalle"
-                    />
-                  </div>
+
                   <div class="form-group col-md-6">
                     <label for="exampleInputEmail1">Propietario</label>
                     <select class="form-control" v-model="form.propietario">
@@ -91,16 +83,6 @@
                   <input v-model="form.cedula" type="text" class="form-control" onkeyup="javascript:this.value = this.value.replace(/[.,,]/,'');"    placeholder="Ingrese cedula,">
                   </div>-->
 
-                  <div class="form-group col-md-6">
-                    <label for="exampleInputPassword1">Valor</label>
-                    <input
-                      type="number"
-                      class="form-control"
-                      v-model="form.valor"
-                      onkeyup="javascript:this.value = this.value.replace(/[.,,]/,'');"
-                      placeholder="Ingrese valor"
-                    />
-                  </div>
                   <!-- <div class="form-group col-md-6">
                   <label>Estado</label>
                   <select class="form-control"  v-model="form.tiempo" >
@@ -109,8 +91,17 @@
                     <option value="12" >1 Año</option>
                   </select>
                   </div>-->
+                  <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Detalles</label>
+                    <input
+                      v-model="form.detalle"
+                      class="form-control"
+                      required
+                      placeholder="Ingresar detalle"
+                    />
+                  </div>
                   <div class="form-group col-md-12">
-                    <label for="exampleInputPassword1">Descripcion</label>
+                    <label for="exampleInputPassword1">Ficha técnica del producto</label>
                     <textarea v-model="form.descripcion" class="form-control" rows="5" cols="80"></textarea>
                   </div>
                 </div>
