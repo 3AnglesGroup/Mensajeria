@@ -34,6 +34,7 @@
           <ul class="treeview-menu">
             <li>
               <router-link to="/cliente-crear"><i class="fa fa-pencil"></i> Crear Cliente</router-link>
+              <router-link to="/cliente-lista"><i class="fa fa-eye"></i> Lista Cliente</router-link>
         
             </li>
           </ul>
