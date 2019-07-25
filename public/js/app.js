@@ -2353,30 +2353,73 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
-  "closeButton": true,
-  "timeOut": "10000" // "progressBar": true,
+  closeButton: true,
+  timeOut: "10000" // "progressBar": true,
 
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
-    console.log('Component mounted.');
+    console.log("Component mounted.");
   },
   data: function data() {
     return {
       enviando: false,
       form: {
-        nombre: '',
-        telefono: '',
-        ciudad: '',
-        direccion: '',
-        barrio: '',
-        observacion: '',
-        fecha_salida: '',
-        fecha_entrega: '',
-        articulo: '',
-        valor: ''
+        nombre: "",
+        telefono: "",
+        ciudad: "",
+        direccion: "",
+        barrio: "",
+        observacion: "",
+        fecha_salida: "",
+        fecha_entrega: "",
+        articulo: "",
+        valor: ""
       }
     };
   },
@@ -2385,17 +2428,17 @@ toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
     crearPaquete: function crearPaquete() {
       var _this = this;
 
-      this.enviando = 'true';
-      axios.post('/api/paquete/', this.form).then(function (res) {
-        toastr__WEBPACK_IMPORTED_MODULE_0___default.a.success('Se creó el paquete correctamente');
+      this.enviando = "true";
+      axios.post("/api/paquete/", this.form).then(function (res) {
+        toastr__WEBPACK_IMPORTED_MODULE_0___default.a.success("Se creó el paquete correctamente");
         console.log(res.data);
         _this.form = {
-          nombres: ''
+          nombres: ""
         };
         _this.enviando = false;
       })["catch"](function (error) {
         _this.enviando = false;
-        toastr__WEBPACK_IMPORTED_MODULE_0___default.a.error('Error al subir el paquete, Intenta nuevamente o comunicate con Soporte');
+        toastr__WEBPACK_IMPORTED_MODULE_0___default.a.error("Error al subir el paquete, Intenta nuevamente o comunicate con Soporte");
       });
     }
   }
@@ -54729,7 +54772,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", {}, [
     _c("section", { staticClass: "content-header" }, [
-      _c("h1", [_vm._v("\n        Crear Paquete\n      ")]),
+      _c("h1", [_vm._v("Crear Paquete")]),
       _vm._v(" "),
       _c("ol", { staticClass: "breadcrumb" }, [
         _c(
@@ -54737,7 +54780,7 @@ var render = function() {
           [
             _c("router-link", { attrs: { to: "/dashboard" } }, [
               _c("i", { staticClass: "fa fa-dashboard" }),
-              _vm._v("Dashboard\n          ")
+              _vm._v("Dashboard\n        ")
             ])
           ],
           1
@@ -54825,7 +54868,38 @@ var render = function() {
                         staticClass: "form-control",
                         attrs: {
                           type: "text",
-                          placeholder: "Ingresar nombres"
+                          placeholder: "Ingresar Tel/Cel"
+                        },
+                        domProps: { value: _vm.form.telefono },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "telefono", $event.target.value)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group col-md-6" }, [
+                      _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+                        _vm._v("Tel / Cel - Alternativo")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.telefono,
+                            expression: "form.telefono"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          placeholder: "Ingresar Tel/Cel"
                         },
                         domProps: { value: _vm.form.telefono },
                         on: {
@@ -55026,72 +55100,6 @@ var render = function() {
                 _c("div", { staticClass: "box box-info" }, [
                   _vm._m(2),
                   _vm._v(" "),
-                  _c("div", { staticClass: "box-body" }, [
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-                        _vm._v("Fecha de salida")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.fecha_pago,
-                            expression: "form.fecha_pago"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "date", required: "" },
-                        domProps: { value: _vm.form.fecha_pago },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.form,
-                              "fecha_pago",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-                        _vm._v("Fecha programada de entrega:")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.fecha_inicio,
-                            expression: "form.fecha_inicio"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "date", name: "inicio" },
-                        domProps: { value: _vm.form.fecha_inicio },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.form,
-                              "fecha_inicio",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
                   _c("div", { staticClass: "box-footer" }, [
                     _c(
                       "button",
@@ -55122,7 +55130,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("li", { staticClass: "active" }, [
       _c("i", { staticClass: "fa fa-pencil" }),
-      _vm._v("Crear")
+      _vm._v("Crear\n      ")
     ])
   },
   function() {
@@ -55138,7 +55146,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "box-header with-border" }, [
-      _c("h3", { staticClass: "box-title" }, [_vm._v("Datos de entrega")])
+      _c("h3", { staticClass: "box-title" }, [_vm._v("Acción")])
     ])
   }
 ]
