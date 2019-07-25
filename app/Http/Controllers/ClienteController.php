@@ -14,7 +14,7 @@ class ClienteController extends Controller
        return Datatables::of($clientes)
              ->addColumn('btn', function ($clientes) {
                          return '
-                         <a class="btn btn-primary btn-sm"  href="/inicio#/paquete-detalle/' . $clientes->id . '">
+                         <a class="btn btn-primary btn-sm"  href="#' . $clientes->id . '">
                          <i class="fa fa-eye"></i> Ver
                          </a>
                         ';

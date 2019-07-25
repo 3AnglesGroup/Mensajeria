@@ -135,6 +135,7 @@
                       class="form-control"
                       v-model="form.nombre_contacto"
                       placeholder="Ingresar nombre"
+                      required
                     />
                   </div>
 
@@ -145,6 +146,7 @@
                       class="form-control"
                       v-model="form.tel_contacto"
                       placeholder="Ingresar nombres"
+                      required
                     />
                   </div>
                   <div class="form-group col-md-12">
@@ -167,7 +169,7 @@
                       class="form-control"
                       v-model="form.usuario"
                       required
-                      placeholder="Ingrese usuario"
+                      placeholder="Ingrese correo del usuario"
                     />
                   </div>
                   <div class="form-group col-md-12">
@@ -250,7 +252,7 @@ export default {
         .catch(error => {
           this.enviando = false;
           toastr.error(
-            "Error al subir el paquete, Intenta nuevamente o comunicate con Soporte"
+            "Error al crear el Cliente, Verifica si existe ese usuario! o comunicate con Soporte"
           );
         });
     }

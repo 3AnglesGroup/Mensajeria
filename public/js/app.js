@@ -1901,6 +1901,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
   closeButton: true,
@@ -1946,7 +1948,7 @@ toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
         _this.enviando = false;
       })["catch"](function (error) {
         _this.enviando = false;
-        toastr__WEBPACK_IMPORTED_MODULE_0___default.a.error("Error al subir el paquete, Intenta nuevamente o comunicate con Soporte");
+        toastr__WEBPACK_IMPORTED_MODULE_0___default.a.error("Error al crear el Cliente, Verifica si existe ese usuario! o comunicate con Soporte");
       });
     }
   }
@@ -54396,7 +54398,11 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control",
-                        attrs: { type: "text", placeholder: "Ingresar nombre" },
+                        attrs: {
+                          type: "text",
+                          placeholder: "Ingresar nombre",
+                          required: ""
+                        },
                         domProps: { value: _vm.form.nombre_contacto },
                         on: {
                           input: function($event) {
@@ -54430,7 +54436,8 @@ var render = function() {
                         staticClass: "form-control",
                         attrs: {
                           type: "text",
-                          placeholder: "Ingresar nombres"
+                          placeholder: "Ingresar nombres",
+                          required: ""
                         },
                         domProps: { value: _vm.form.tel_contacto },
                         on: {
@@ -54500,7 +54507,7 @@ var render = function() {
                         attrs: {
                           type: "mail",
                           required: "",
-                          placeholder: "Ingrese usuario"
+                          placeholder: "Ingrese correo del usuario"
                         },
                         domProps: { value: _vm.form.usuario },
                         on: {
