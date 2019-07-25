@@ -68,9 +68,7 @@
                  <div class="form-group col-md-6">
                   <label for="exampleInputPassword1">Télefono/Celular</label>
                   <input type="text" class="form-control" v-model="form.telefono"   placeholder="Ingrese correo de la empresa">
-                </div>
-               
-                
+                </div>                
                 <!-- <div class="form-group col-md-6">
                   <label>Estado</label>
                   <select class="form-control"  v-model="form.tiempo" >
@@ -115,8 +113,6 @@
                 <div class="form-group col-md-12">
                   <hr>
                 </div>
-
-                
 
                 <div class="form-group col-md-12">
                   <label for="exampleInputPassword1">Usuario</label>
