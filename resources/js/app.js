@@ -42,6 +42,16 @@ let router = new Router({
             path: "/cliente-lista",
             name: "/cliente-lista",
             component: require("./cliente/Lista").default
+        },
+        {
+            path: "/producto-crear",
+            name: "/prodcuto-crear",
+            component: require("./producto/Crear").default
+        },
+        {
+            path: "/producto-lista",
+            name: "/producto-lista",
+            component: require("./producto/Lista").default
         }
     ]
     // mode:'history'
@@ -55,6 +65,9 @@ Vue.component("paquete-detalle", require("./paquete/Detalle.vue").default);
 //Cliente
 Vue.component("cliente-crear", require("./cliente/Crear.vue").default);
 Vue.component("cliente-lista", require("./cliente/Lista.vue").default);
+//Producto
+Vue.component("producto-crear", require("./producto/Crear.vue").default);
+Vue.component("producto-lista", require("./producto/Lista.vue").default);
 
 const app = new Vue({
     el: "#app",

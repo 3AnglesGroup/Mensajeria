@@ -38,12 +38,12 @@
         </a>
         <ul class="treeview-menu">
             <li>
-                <router-link to="/paquete-index"
+                <router-link to="/producto-lista"
                     ><i class="fa fa-eye"></i> Mis productos</router-link
                 >
             </li>
             <li>
-                <router-link to="/paquete-crear"
+                <router-link to="/producto-crear"
                     ><i class="fa fa-pencil"></i> Crear producto</router-link
                 >
             </li>
