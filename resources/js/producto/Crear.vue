@@ -31,9 +31,16 @@
                 <div class="box-header with-border">
                   <h3 class="box-title">Datos del prodcuto</h3>
                 </div>
-                <!-- /.box-header -->
-                <!-- form start -->
                 <div class="box-body">
+                  <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Tipo</label>
+                    <select class="form-control" v-model="form.tipo">
+                      <option value>Seleccione...</option>
+                      <option value="6">Salud</option>
+                      <option value="12">Belleza</option>
+                    </select>
+                  </div>
+
                   <div class="form-group col-md-6">
                     <label for="exampleInputEmail1">Nombre</label>
                     <input
@@ -41,6 +48,41 @@
                       class="form-control"
                       required
                       placeholder="Ingresar nombres"
+                    />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Detalles o ficha técnica del producto</label>
+                    <input
+                      v-model="form.detalle"
+                      class="form-control"
+                      required
+                      placeholder="Ingresar detalle"
+                    />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Propietario</label>
+                    <select class="form-control" v-model="form.propietario">
+                      <option value=" ">Seleccione...</option>
+                      <option value="6">Empresa 1</option>
+                      <option value="12">Empresa 2</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Bodega</label>
+                    <select class="form-control" v-model="form.bodega">
+                      <option value=" ">Seleccione...</option>
+                      <option value="6">Cartagena 1</option>
+                      <option value="12">Bogota 2</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1">Cantidad</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      v-model="form.cantidad"
+                      onkeyup="javascript:this.value = this.value.replace(/[.,,]/,'');"
+                      placeholder="Ingrese cantidad"
                     />
                   </div>
 
@@ -56,7 +98,7 @@
                       class="form-control"
                       v-model="form.valor"
                       onkeyup="javascript:this.value = this.value.replace(/[.,,]/,'');"
-                      placeholder="Ingrese barrio"
+                      placeholder="Ingrese valor"
                     />
                   </div>
                   <!-- <div class="form-group col-md-6">
@@ -68,8 +110,8 @@
                   </select>
                   </div>-->
                   <div class="form-group col-md-12">
-                    <label for="exampleInputPassword1">Observación</label>
-                    <textarea v-model="form.observacion" class="form-control" rows="5" cols="80"></textarea>
+                    <label for="exampleInputPassword1">Descripcion</label>
+                    <textarea v-model="form.descripcion" class="form-control" rows="5" cols="80"></textarea>
                   </div>
                 </div>
                 <!-- /.box-body -->
@@ -81,15 +123,15 @@
             <div class="col-md-5">
               <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Acción</h3>
+                  <h3 class="box-title">Información</h3>
                 </div>
 
-                <!-- <div class="box-body">
+                <div class="box-body">
                   <div class="form-group">
-                    <label for="exampleInputPassword1">Fecha de salida</label>
+                    <label for="exampleInputPassword1">Fecha de entrada</label>
                     <input type="date" required v-model="form.fecha_pago" class="form-control" />
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label for="exampleInputPassword1">Fecha programada de entrega:</label>
                     <input
                       type="date"
@@ -97,8 +139,8 @@
                       v-model="form.fecha_inicio"
                       name="inicio"
                     />
-                  </div>
-                </div>-->
+                  </div>-->
+                </div>
 
                 <div class="box-footer">
                   <button type="submit" class="btn btn-primary" :disabled="enviando">
