@@ -18,15 +18,12 @@
         </li>
       </ol>
     </section>
-    <!-- Main content -->
+
     <section class="content container-fluid">
-      <!-- Main content -->
       <section class="content">
-        <form @submit.prevent="crearPaquete">
+        <form @submit.prevent="crearProducto">
           <div class="row">
-            <!-- left column -->
             <div class="col-md-7">
-              <!-- general form elements -->
               <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">Datos del prodcuto</h3>
@@ -36,8 +33,8 @@
                     <label for="exampleInputEmail1">Tipo</label>
                     <select class="form-control" v-model="form.tipo">
                       <option value>Seleccione...</option>
-                      <option value="6">Salud</option>
-                      <option value="12">Belleza</option>
+                      <option value="Salud">Salud</option>
+                      <option value="Belleza">Belleza</option>
                     </select>
                   </div>
 
@@ -53,18 +50,23 @@
 
                   <div class="form-group col-md-6">
                     <label for="exampleInputEmail1">Propietario</label>
-                    <select class="form-control" v-model="form.propietario">
-                      <option value=" ">Seleccione...</option>
-                      <option value="6">Empresa 1</option>
-                      <option value="12">Empresa 2</option>
+                    <select class="form-control" v-model="form.propietario" required>
+                      <option value>Seleccione...</option>
+                      <option
+                        v-for="cliente in clientes"
+                        :key="cliente.id"
+                        :value="cliente.id"
+                      >{{cliente.razon_social}}</option>
                     </select>
                   </div>
                   <div class="form-group col-md-6">
                     <label for="exampleInputEmail1">Bodega</label>
-                    <select class="form-control" v-model="form.bodega">
-                      <option value=" ">Seleccione...</option>
-                      <option value="6">Cartagena 1</option>
-                      <option value="12">Bogota 2</option>
+                    <select class="form-control" v-model="form.bodega" required>
+                      <option value>Seleccione...</option>
+                      <option value="Cartagena">Cartagena</option>
+                      <option value="Bogota">Bogota</option>
+                      <option value="Barranquilla">Barranquilla</option>
+                      <option value="Medellin">Medellin</option>
                     </select>
                   </div>
                   <div class="form-group col-md-6">
@@ -78,19 +80,6 @@
                     />
                   </div>
 
-                  <!-- <div class="form-group col-md-6">
-                  <label for="exampleInputEmail1">Cedula</label>
-                  <input v-model="form.cedula" type="text" class="form-control" onkeyup="javascript:this.value = this.value.replace(/[.,,]/,'');"    placeholder="Ingrese cedula,">
-                  </div>-->
-
-                  <!-- <div class="form-group col-md-6">
-                  <label>Estado</label>
-                  <select class="form-control"  v-model="form.tiempo" >
-                    <option  value="">Seleccione...</option>
-                    <option value="6" >6 Meses</option>
-                    <option value="12" >1 Año</option>
-                  </select>
-                  </div>-->
                   <div class="form-group col-md-6">
                     <label for="exampleInputEmail1">Detalles</label>
                     <input
@@ -102,36 +91,24 @@
                   </div>
                   <div class="form-group col-md-12">
                     <label for="exampleInputPassword1">Ficha técnica del producto</label>
-                    <textarea v-model="form.descripcion" class="form-control" rows="5" cols="80"></textarea>
+                    <textarea v-model="form.ficha" class="form-control" rows="5" cols="80"></textarea>
                   </div>
                 </div>
-                <!-- /.box-body -->
               </div>
-              <!-- /.box -->
             </div>
-            <!--/.col (left) -->
-            <!-- right column -->
+
             <div class="col-md-5">
               <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Información</h3>
+                  <h3 class="box-title">Acción</h3>
                 </div>
 
-                <div class="box-body">
+                <!-- <div class="box-body">
                   <div class="form-group">
                     <label for="exampleInputPassword1">Fecha de entrada</label>
                     <input type="date" required v-model="form.fecha_pago" class="form-control" />
                   </div>
-                  <!-- <div class="form-group">
-                    <label for="exampleInputPassword1">Fecha programada de entrega:</label>
-                    <input
-                      type="date"
-                      class="form-control"
-                      v-model="form.fecha_inicio"
-                      name="inicio"
-                    />
-                  </div>-->
-                </div>
+                </div>-->
 
                 <div class="box-footer">
                   <button type="submit" class="btn btn-primary" :disabled="enviando">
@@ -141,11 +118,9 @@
                 </div>
               </div>
             </div>
-            <!--/.col (right) -->
           </div>
         </form>
       </section>
-      <!-- /.content -->
     </section>
   </div>
 </template>
@@ -164,28 +139,35 @@ export default {
   data() {
     return {
       enviando: false,
+      clientes: [],
       form: {
+        tipo: "",
         nombre: "",
-        telefono: "",
-        ciudad: "",
-        direccion: "",
-        barrio: "",
-        observacion: "",
-        fecha_salida: "",
-        fecha_entrega: "",
-        articulo: "",
-        valor: ""
+        propietario: "",
+        bodega: "",
+        cantidad: "",
+        detalle: "",
+        ficha: "",
+        fecha_entrada: ""
       }
     };
   },
-  computed: {},
+  created() {
+    this.getClientes();
+  },
   methods: {
-    crearPaquete() {
+    getClientes() {
+      axios.get("/api/clientes").then(res => {
+        this.clientes = res.data.data;
+        console.log(this.clientes.data);
+      });
+    },
+    crearProducto() {
       this.enviando = "true";
       axios
-        .post("/api/paquete/", this.form)
+        .post("/api/producto/", this.form)
         .then(res => {
-          toastr.success("Se creó el paquete correctamente");
+          toastr.success("Se creó  correctamente");
           console.log(res.data);
 
           this.form = {
@@ -197,7 +179,7 @@ export default {
         .catch(error => {
           this.enviando = false;
           toastr.error(
-            "Error al subir el paquete, Intenta nuevamente o comunicate con Soporte"
+            "Error al subir el producto, Intenta nuevamente o comunicate con Soporte"
           );
         });
     }

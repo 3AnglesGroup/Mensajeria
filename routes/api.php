@@ -24,4 +24,6 @@ Route::get('paquete/{id}','PaqueteController@detalle');
 //Cliente
 Route::post('cliente','ClienteController@store');
 Route::get('clientes','ClienteController@index');
+//Producto
+Route::post('producto','ProductoController@store');
 
