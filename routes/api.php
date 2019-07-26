@@ -27,4 +27,5 @@ Route::get('clientes','ClienteController@index');
 //Producto
 Route::post('producto','ProductoController@store');
 Route::get('productos','ProductoController@index');
+Route::get('productos-bodega/{bodeda}','ProductoController@productosBodega');
 

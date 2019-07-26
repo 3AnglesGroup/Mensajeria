@@ -37,4 +37,9 @@ class ProductoController extends Controller
 
         return 200;
     }
+
+    public function productosBodega($bodega){
+        return Producto::where('bodega',$bodega)->get();
+
+    }
 }

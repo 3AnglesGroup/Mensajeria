@@ -10,7 +10,7 @@
         </li>
         <li>
           <router-link to="/paquete-index">
-            <i class="fa fa-book"></i>Mis Envios
+            <i class="fa fa-book"></i>Lista Envios
           </router-link>
         </li>
         <li class="active">
@@ -43,15 +43,6 @@
                       placeholder="Ingresar nombres"
                     />
                   </div>
-                  <div class="form-group col-md-6">
-                    <label for="exampleInputEmail1">Guia</label>
-                    <input
-                      v-model="form.nombre"
-                      class="form-control"
-                      required
-                      placeholder="Ingresar guia"
-                    />
-                  </div>
 
                   <!-- <div class="form-group col-md-6">
                   <label for="exampleInputEmail1">Cedula</label>
@@ -63,7 +54,7 @@
                     <input
                       type="text"
                       class="form-control"
-                      v-model="form.telefono"
+                      v-model="form.tel"
                       placeholder="Ingresar Tel/Cel"
                     />
                   </div>
@@ -72,7 +63,7 @@
                     <input
                       type="text"
                       class="form-control"
-                      v-model="form.telefono"
+                      v-model="form.tel_alt"
                       placeholder="Ingresar Tel/Cel"
                     />
                   </div>
@@ -112,7 +103,7 @@
                       class="form-control"
                       v-model="form.valor"
                       onkeyup="javascript:this.value = this.value.replace(/[.,,]/,'');"
-                      placeholder="Ingrese barrio"
+                      placeholder="Ingrese valor a cobrar"
                     />
                   </div>
                   <!-- <div class="form-group col-md-6">
@@ -142,7 +133,12 @@
 
                 <div class="form-group col-md-12">
                   <label for="exampleInputEmail1">Bodega origen</label>
-                  <select class="form-control" v-model="form.bodega" required>
+                  <select
+                    class="form-control"
+                    @change="getProductos()"
+                    v-model="form.bodega"
+                    required
+                  >
                     <option value>Seleccione...</option>
                     <option value="Cartagena">Cartagena</option>
                     <option value="Bogota">Bogota</option>
@@ -153,12 +149,11 @@
 
                 <div class="form-group col-md-12">
                   <label for="exampleInputEmail1">Producto</label>
-                  <select class="form-control" v-model="form.bodega" required>
-                    <option value>Seleccione...</option>
-                    <option value="Cartagena">Cartagena</option>
-                    <option value="Bogota">Bogota</option>
-                    <option value="Barranquilla">Barranquilla</option>
-                    <option value="Medellin">Medellin</option>
+                  <select class="form-control" v-model="form.producto" required>
+                    <option v-for="producto in productos" :key="producto.id" value>
+                      {{producto.nombre}} -
+                      <span>Disponible: {{producto.cantidad}}</span>
+                    </option>
                   </select>
                 </div>
 
@@ -167,15 +162,10 @@
                   <input
                     type="number"
                     class="form-control"
-                    v-model="form.valor"
+                    v-model="form.cantidad"
                     onkeyup="javascript:this.value = this.value.replace(/[.,,]/,'');"
                     placeholder="Ingrese barrio"
                   />
-                </div>
-                <div class="form-group col-md-12">
-                  <label for="exampleInputPassword1">Fecha de entrega</label>
-                  <input type="date" required v-model="form.fecha_pago" class="form-control" />
-                  <span>Informacion sobre la fecha</span>
                 </div>
 
                 <!-- <div class="box-body">
@@ -225,9 +215,11 @@ export default {
   data() {
     return {
       enviando: false,
+      productos: [],
       form: {
         nombre: "",
-        telefono: "",
+        tel: "",
+        tel_alt: "",
         ciudad: "",
         direccion: "",
         barrio: "",
@@ -235,19 +227,25 @@ export default {
         fecha_salida: "",
         fecha_entrega: "",
         articulo: "",
-        valor: ""
+        valor: "",
+        producto: ""
       }
     };
   },
-  computed: {},
+  created() {},
   methods: {
+    getProductos() {
+      axios.get("api/productos-bodega/" + this.form.bodega).then(res => {
+        this.productos = res.data;
+        console.log(res.data);
+      });
+    },
     crearPaquete() {
       this.enviando = "true";
       axios
         .post("/api/paquete", this.form)
         .then(res => {
           toastr.success("Se creó el paquete correctamente");
-          console.log(res.data);
 
           this.form = {
             nombres: ""

@@ -2427,16 +2427,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
   closeButton: true,
@@ -2450,9 +2440,11 @@ toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
   data: function data() {
     return {
       enviando: false,
+      productos: [],
       form: {
         nombre: "",
-        telefono: "",
+        tel: "",
+        tel_alt: "",
         ciudad: "",
         direccion: "",
         barrio: "",
@@ -2460,25 +2452,33 @@ toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
         fecha_salida: "",
         fecha_entrega: "",
         articulo: "",
-        valor: ""
+        valor: "",
+        producto: ""
       }
     };
   },
-  computed: {},
+  created: function created() {},
   methods: {
-    crearPaquete: function crearPaquete() {
+    getProductos: function getProductos() {
       var _this = this;
+
+      axios.get("api/productos-bodega/" + this.form.bodega).then(function (res) {
+        _this.productos = res.data;
+        console.log(res.data);
+      });
+    },
+    crearPaquete: function crearPaquete() {
+      var _this2 = this;
 
       this.enviando = "true";
       axios.post("/api/paquete", this.form).then(function (res) {
         toastr__WEBPACK_IMPORTED_MODULE_0___default.a.success("Se creó el paquete correctamente");
-        console.log(res.data);
-        _this.form = {
+        _this2.form = {
           nombres: ""
         };
-        _this.enviando = false;
+        _this2.enviando = false;
       })["catch"](function (error) {
-        _this.enviando = false;
+        _this2.enviando = false;
         toastr__WEBPACK_IMPORTED_MODULE_0___default.a.error("Error al subir el paquete, Intenta nuevamente o comunicate con Soporte");
       });
     }
@@ -55172,7 +55172,7 @@ var render = function() {
           [
             _c("router-link", { attrs: { to: "/paquete-index" } }, [
               _c("i", { staticClass: "fa fa-book" }),
-              _vm._v("Mis Envios\n        ")
+              _vm._v("Lista Envios\n        ")
             ])
           ],
           1
@@ -55234,34 +55234,6 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group col-md-6" }, [
                       _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                        _vm._v("Guia")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.nombre,
-                            expression: "form.nombre"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { required: "", placeholder: "Ingresar guia" },
-                        domProps: { value: _vm.form.nombre },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.form, "nombre", $event.target.value)
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group col-md-6" }, [
-                      _c("label", { attrs: { for: "exampleInputEmail1" } }, [
                         _vm._v("Télefono - Celular")
                       ]),
                       _vm._v(" "),
@@ -55270,8 +55242,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.form.telefono,
-                            expression: "form.telefono"
+                            value: _vm.form.tel,
+                            expression: "form.tel"
                           }
                         ],
                         staticClass: "form-control",
@@ -55279,13 +55251,13 @@ var render = function() {
                           type: "text",
                           placeholder: "Ingresar Tel/Cel"
                         },
-                        domProps: { value: _vm.form.telefono },
+                        domProps: { value: _vm.form.tel },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.$set(_vm.form, "telefono", $event.target.value)
+                            _vm.$set(_vm.form, "tel", $event.target.value)
                           }
                         }
                       })
@@ -55301,8 +55273,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.form.telefono,
-                            expression: "form.telefono"
+                            value: _vm.form.tel_alt,
+                            expression: "form.tel_alt"
                           }
                         ],
                         staticClass: "form-control",
@@ -55310,13 +55282,13 @@ var render = function() {
                           type: "text",
                           placeholder: "Ingresar Tel/Cel"
                         },
-                        domProps: { value: _vm.form.telefono },
+                        domProps: { value: _vm.form.tel_alt },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.$set(_vm.form, "telefono", $event.target.value)
+                            _vm.$set(_vm.form, "tel_alt", $event.target.value)
                           }
                         }
                       })
@@ -55428,7 +55400,7 @@ var render = function() {
                           type: "number",
                           onkeyup:
                             "javascript:this.value = this.value.replace(/[.,,]/,'');",
-                          placeholder: "Ingrese barrio"
+                          placeholder: "Ingrese valor a cobrar"
                         },
                         domProps: { value: _vm.form.valor },
                         on: {
@@ -55500,23 +55472,28 @@ var render = function() {
                         staticClass: "form-control",
                         attrs: { required: "" },
                         on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.form,
-                              "bodega",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
+                          change: [
+                            function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.form,
+                                "bodega",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            },
+                            function($event) {
+                              return _vm.getProductos()
+                            }
+                          ]
                         }
                       },
                       [
@@ -55555,8 +55532,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.form.bodega,
-                            expression: "form.bodega"
+                            value: _vm.form.producto,
+                            expression: "form.producto"
                           }
                         ],
                         staticClass: "form-control",
@@ -55573,7 +55550,7 @@ var render = function() {
                               })
                             _vm.$set(
                               _vm.form,
-                              "bodega",
+                              "producto",
                               $event.target.multiple
                                 ? $$selectedVal
                                 : $$selectedVal[0]
@@ -55581,27 +55558,23 @@ var render = function() {
                           }
                         }
                       },
-                      [
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("Seleccione...")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "Cartagena" } }, [
-                          _vm._v("Cartagena")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "Bogota" } }, [
-                          _vm._v("Bogota")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "Barranquilla" } }, [
-                          _vm._v("Barranquilla")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "Medellin" } }, [
-                          _vm._v("Medellin")
-                        ])
-                      ]
+                      _vm._l(_vm.productos, function(producto) {
+                        return _c(
+                          "option",
+                          { key: producto.id, attrs: { value: "" } },
+                          [
+                            _vm._v(
+                              "\n                    " +
+                                _vm._s(producto.nombre) +
+                                " -\n                    "
+                            ),
+                            _c("span", [
+                              _vm._v("Disponible: " + _vm._s(producto.cantidad))
+                            ])
+                          ]
+                        )
+                      }),
+                      0
                     )
                   ]),
                   _vm._v(" "),
@@ -55615,8 +55588,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.form.valor,
-                          expression: "form.valor"
+                          value: _vm.form.cantidad,
+                          expression: "form.cantidad"
                         }
                       ],
                       staticClass: "form-control",
@@ -55626,46 +55599,16 @@ var render = function() {
                           "javascript:this.value = this.value.replace(/[.,,]/,'');",
                         placeholder: "Ingrese barrio"
                       },
-                      domProps: { value: _vm.form.valor },
+                      domProps: { value: _vm.form.cantidad },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.$set(_vm.form, "valor", $event.target.value)
+                          _vm.$set(_vm.form, "cantidad", $event.target.value)
                         }
                       }
                     })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group col-md-12" }, [
-                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-                      _vm._v("Fecha de entrega")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.fecha_pago,
-                          expression: "form.fecha_pago"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { type: "date", required: "" },
-                      domProps: { value: _vm.form.fecha_pago },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "fecha_pago", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("span", [_vm._v("Informacion sobre la fecha")])
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "box-footer" }, [
@@ -57001,7 +56944,7 @@ var staticRenderFns = [
           staticClass: "btn btn-primary btn-sm",
           attrs: { type: "button", name: "button" }
         },
-        [_vm._v("-")]
+        [_vm._v("Crear producto")]
       )
     ])
   },

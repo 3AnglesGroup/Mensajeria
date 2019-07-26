@@ -6,7 +6,7 @@
         <small>Productos</small>
         <br />
         <br />
-        <button type="button" class="btn btn-primary btn-sm" name="button">-</button>
+        <button type="button" class="btn btn-primary btn-sm" name="button">Crear producto</button>
       </h1>
       <ol class="breadcrumb">
         <li>
@@ -56,7 +56,9 @@ export default {
         serverSide: true,
         ajax: "/api/productos",
         columns: [
-          { data: "id" },
+          {
+            data: "id"
+          },
           { data: "nombre" },
           { data: "propietario" },
           { data: "bodega" },
