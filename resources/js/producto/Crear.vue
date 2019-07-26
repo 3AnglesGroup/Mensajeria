@@ -165,7 +165,7 @@ export default {
     crearProducto() {
       this.enviando = "true";
       axios
-        .post("/api/producto/", this.form)
+        .post("/api/producto", this.form)
         .then(res => {
           toastr.success("Se creó  correctamente");
           this.form = {

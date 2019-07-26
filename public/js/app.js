@@ -3061,7 +3061,7 @@ toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
       var _this2 = this;
 
       this.enviando = "true";
-      axios.post("/api/producto/", this.form).then(function (res) {
+      axios.post("/api/producto", this.form).then(function (res) {
         toastr__WEBPACK_IMPORTED_MODULE_0___default.a.success("Se creó  correctamente");
         _this2.form = {
           nombres: ""
