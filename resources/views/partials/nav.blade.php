@@ -39,7 +39,7 @@
         <ul class="treeview-menu">
             <li>
                 <router-link to="/producto-lista"
-                    ><i class="fa fa-eye"></i> Mis productos</router-link
+                    ><i class="fa fa-eye"></i> Lista</router-link
                 >
             </li>
             <li>

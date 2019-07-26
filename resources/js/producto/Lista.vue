@@ -3,45 +3,10 @@
     <section class="content-header">
       <h1>
         Listado
-        <small>Paquetes</small>
+        <small>Productos</small>
         <br />
         <br />
-        <button
-          type="button"
-          v-on:click="getTitular(3)"
-          class="btn btn-primary btn-sm"
-          name="button"
-        >EN TRANCITO</button>
-        <button
-          type="button"
-          v-on:click="getTitular(3)"
-          class="btn btn-primary btn-sm"
-          name="button"
-        >PROGRAMADOS</button>
-        <button
-          type="button"
-          v-on:click="getTitular(2)"
-          class="btn btn-primary btn-sm"
-          name="button"
-        >ENTREGADOS</button>
-        <button
-          type="button"
-          v-on:click="getTitular(1)"
-          class="btn btn-primary btn-sm"
-          name="button"
-        >CANCELADOS</button>
-        <button
-          type="button"
-          v-on:click="getTitular(1)"
-          class="btn btn-primary btn-sm"
-          name="button"
-        >RE-PROGRAMADOS</button>
-        <button
-          type="button"
-          v-on:click="getTitular(1)"
-          class="btn btn-primary btn-sm"
-          name="button"
-        >EN BODEGA</button>
+        <button type="button" class="btn btn-primary btn-sm" name="button">-</button>
       </h1>
       <ol class="breadcrumb">
         <li>
@@ -66,12 +31,11 @@
           <table id="datatable-titulares" class="table table-bordered table-striped">
             <thead>
               <tr>
-                <th>ESTADO</th>
+                <th>CODIGO</th>
                 <th>NOMBRE</th>
-                <th>TELÉFONO</th>
-                <th>CIUDAD</th>
-                <th>ARTICULO</th>
-                <th>VALOR</th>
+                <th>PROPIETARIO</th>
+                <th>BODEGA</th>
+                <th>CANTIDAD</th>
                 <th>ACCION</th>
               </tr>
             </thead>
@@ -90,14 +54,13 @@ export default {
     $(document).ready(function() {
       $("#datatable-titulares").DataTable({
         serverSide: true,
-        ajax: "/api/paquetes",
+        ajax: "/api/productos",
         columns: [
-          { data: "estado" },
+          { data: "id" },
           { data: "nombre" },
-          { data: "telefono" },
-          { data: "ciudad" },
-          { data: "articulo" },
-          { data: "valor" },
+          { data: "propietario" },
+          { data: "bodega" },
+          { data: "cantidad" },
           { data: "btn" }
         ],
         language: {

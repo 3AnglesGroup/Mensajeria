@@ -3070,61 +3070,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     $(document).ready(function () {
       $("#datatable-titulares").DataTable({
         serverSide: true,
-        ajax: "/api/paquetes",
+        ajax: "/api/productos",
         columns: [{
-          data: "estado"
+          data: "id"
         }, {
           data: "nombre"
         }, {
-          data: "telefono"
+          data: "propietario"
         }, {
-          data: "ciudad"
+          data: "bodega"
         }, {
-          data: "articulo"
-        }, {
-          data: "valor"
+          data: "cantidad"
         }, {
           data: "btn"
         }],
@@ -56745,98 +56707,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", {}, [
     _c("section", { staticClass: "content-header" }, [
-      _c("h1", [
-        _vm._v("\n      Listado\n      "),
-        _c("small", [_vm._v("Paquetes")]),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary btn-sm",
-            attrs: { type: "button", name: "button" },
-            on: {
-              click: function($event) {
-                return _vm.getTitular(3)
-              }
-            }
-          },
-          [_vm._v("EN TRANCITO")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary btn-sm",
-            attrs: { type: "button", name: "button" },
-            on: {
-              click: function($event) {
-                return _vm.getTitular(3)
-              }
-            }
-          },
-          [_vm._v("PROGRAMADOS")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary btn-sm",
-            attrs: { type: "button", name: "button" },
-            on: {
-              click: function($event) {
-                return _vm.getTitular(2)
-              }
-            }
-          },
-          [_vm._v("ENTREGADOS")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary btn-sm",
-            attrs: { type: "button", name: "button" },
-            on: {
-              click: function($event) {
-                return _vm.getTitular(1)
-              }
-            }
-          },
-          [_vm._v("CANCELADOS")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary btn-sm",
-            attrs: { type: "button", name: "button" },
-            on: {
-              click: function($event) {
-                return _vm.getTitular(1)
-              }
-            }
-          },
-          [_vm._v("RE-PROGRAMADOS")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary btn-sm",
-            attrs: { type: "button", name: "button" },
-            on: {
-              click: function($event) {
-                return _vm.getTitular(1)
-              }
-            }
-          },
-          [_vm._v("EN BODEGA")]
-        )
-      ]),
+      _vm._m(0),
       _vm._v(" "),
       _c("ol", { staticClass: "breadcrumb" }, [
         _c(
@@ -56850,14 +56721,36 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _vm._m(0)
+        _vm._m(1)
       ])
     ]),
     _vm._v(" "),
-    _vm._m(1)
+    _vm._m(2)
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h1", [
+      _vm._v("\n      Listado\n      "),
+      _c("small", [_vm._v("Productos")]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary btn-sm",
+          attrs: { type: "button", name: "button" }
+        },
+        [_vm._v("-")]
+      )
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -56891,17 +56784,15 @@ var staticRenderFns = [
             [
               _c("thead", [
                 _c("tr", [
-                  _c("th", [_vm._v("ESTADO")]),
+                  _c("th", [_vm._v("CODIGO")]),
                   _vm._v(" "),
                   _c("th", [_vm._v("NOMBRE")]),
                   _vm._v(" "),
-                  _c("th", [_vm._v("TELÉFONO")]),
+                  _c("th", [_vm._v("PROPIETARIO")]),
                   _vm._v(" "),
-                  _c("th", [_vm._v("CIUDAD")]),
+                  _c("th", [_vm._v("BODEGA")]),
                   _vm._v(" "),
-                  _c("th", [_vm._v("ARTICULO")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("VALOR")]),
+                  _c("th", [_vm._v("CANTIDAD")]),
                   _vm._v(" "),
                   _c("th", [_vm._v("ACCION")])
                 ])
