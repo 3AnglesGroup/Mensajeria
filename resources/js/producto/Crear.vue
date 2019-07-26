@@ -159,13 +159,12 @@ export default {
     getClientes() {
       axios.get("/api/clientes").then(res => {
         this.clientes = res.data.data;
-        console.log(this.clientes.data);
       });
     },
     crearProducto() {
       this.enviando = "true";
       axios
-        .post("/api/producto", this.form)
+        .post("api/producto", this.form)
         .then(res => {
           toastr.success("Se creó  correctamente");
           this.form = {
