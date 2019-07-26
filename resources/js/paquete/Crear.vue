@@ -1,7 +1,7 @@
 <template>
   <div class>
     <section class="content-header">
-      <h1>Crear Paquete</h1>
+      <h1>Crear Envio</h1>
       <ol class="breadcrumb">
         <li>
           <router-link to="/dashboard">
@@ -10,7 +10,7 @@
         </li>
         <li>
           <router-link to="/paquete-index">
-            <i class="fa fa-book"></i>Mis Paquetes
+            <i class="fa fa-book"></i>Mis Envios
           </router-link>
         </li>
         <li class="active">
@@ -41,6 +41,15 @@
                       class="form-control"
                       required
                       placeholder="Ingresar nombres"
+                    />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Guia</label>
+                    <input
+                      v-model="form.nombre"
+                      class="form-control"
+                      required
+                      placeholder="Ingresar guia"
                     />
                   </div>
 
@@ -95,15 +104,7 @@
                       placeholder="Ingrese barrio"
                     />
                   </div>
-                  <div class="form-group col-md-6">
-                    <label for="exampleInputPassword1">Articulo</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      v-model="form.articulo"
-                      placeholder="Ingrese barrio"
-                    />
-                  </div>
+
                   <div class="form-group col-md-6">
                     <label for="exampleInputPassword1">Valor</label>
                     <input
@@ -136,7 +137,45 @@
             <div class="col-md-5">
               <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Acción</h3>
+                  <h3 class="box-title">Detalle del producto</h3>
+                </div>
+
+                <div class="form-group col-md-12">
+                  <label for="exampleInputEmail1">Bodega origen</label>
+                  <select class="form-control" v-model="form.bodega" required>
+                    <option value>Seleccione...</option>
+                    <option value="Cartagena">Cartagena</option>
+                    <option value="Bogota">Bogota</option>
+                    <option value="Barranquilla">Barranquilla</option>
+                    <option value="Medellin">Medellin</option>
+                  </select>
+                </div>
+
+                <div class="form-group col-md-12">
+                  <label for="exampleInputEmail1">Producto</label>
+                  <select class="form-control" v-model="form.bodega" required>
+                    <option value>Seleccione...</option>
+                    <option value="Cartagena">Cartagena</option>
+                    <option value="Bogota">Bogota</option>
+                    <option value="Barranquilla">Barranquilla</option>
+                    <option value="Medellin">Medellin</option>
+                  </select>
+                </div>
+
+                <div class="form-group col-md-12">
+                  <label for="exampleInputPassword1">Cantidad</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    v-model="form.valor"
+                    onkeyup="javascript:this.value = this.value.replace(/[.,,]/,'');"
+                    placeholder="Ingrese barrio"
+                  />
+                </div>
+                <div class="form-group col-md-12">
+                  <label for="exampleInputPassword1">Fecha de entrega</label>
+                  <input type="date" required v-model="form.fecha_pago" class="form-control" />
+                  <span>Informacion sobre la fecha</span>
                 </div>
 
                 <!-- <div class="box-body">
@@ -205,7 +244,7 @@ export default {
     crearPaquete() {
       this.enviando = "true";
       axios
-        .post("/api/paquete/", this.form)
+        .post("/api/paquete", this.form)
         .then(res => {
           toastr.success("Se creó el paquete correctamente");
           console.log(res.data);

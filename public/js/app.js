@@ -2398,6 +2398,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
   closeButton: true,
@@ -2431,7 +2470,7 @@ toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
       var _this = this;
 
       this.enviando = "true";
-      axios.post("/api/paquete/", this.form).then(function (res) {
+      axios.post("/api/paquete", this.form).then(function (res) {
         toastr__WEBPACK_IMPORTED_MODULE_0___default.a.success("Se creó el paquete correctamente");
         console.log(res.data);
         _this.form = {
@@ -2760,50 +2799,79 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
     $(document).ready(function () {
-      $('#datatable-titulares').DataTable({
-        "serverSide": true,
-        "ajax": '/api/paquetes',
-        "columns": [{
-          data: 'estado'
+      $("#datatable-titulares").DataTable({
+        serverSide: true,
+        ajax: "/api/paquetes",
+        columns: [{
+          data: "estado"
         }, {
-          data: 'nombre'
+          data: "nombre"
         }, {
-          data: 'telefono'
+          data: "telefono"
         }, {
-          data: 'ciudad'
+          data: "ciudad"
         }, {
-          data: 'articulo'
+          data: "articulo"
         }, {
-          data: 'valor'
+          data: "valor"
         }, {
-          data: 'btn'
+          data: "btn"
         }],
-        "language": {
-          "sProcessing": "Procesando...",
-          "sLengthMenu": "Mostrar _MENU_ registros",
-          "sZeroRecords": "No se encontraron resultados",
-          "sEmptyTable": "Ningún dato disponible en esta tabla",
-          "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-          "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-          "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-          "sInfoPostFix": "",
-          "sSearch": "Buscar:",
-          "sUrl": "",
-          "sInfoThousands": ",",
-          "sLoadingRecords": "Cargando...",
-          "oPaginate": {
-            "sFirst": "Primero",
-            "sLast": "Último",
-            "sNext": "Siguiente",
-            "sPrevious": "Anterior"
+        language: {
+          sProcessing: "Procesando...",
+          sLengthMenu: "Mostrar _MENU_ registros",
+          sZeroRecords: "No se encontraron resultados",
+          sEmptyTable: "Ningún dato disponible en esta tabla",
+          sInfo: "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+          sInfoEmpty: "Mostrando registros del 0 al 0 de un total de 0 registros",
+          sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
+          sInfoPostFix: "",
+          sSearch: "Buscar:",
+          sUrl: "",
+          sInfoThousands: ",",
+          sLoadingRecords: "Cargando...",
+          oPaginate: {
+            sFirst: "Primero",
+            sLast: "Último",
+            sNext: "Siguiente",
+            sPrevious: "Anterior"
           },
-          "oAria": {
-            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+          oAria: {
+            sSortAscending: ": Activar para ordenar la columna de manera ascendente",
+            sSortDescending: ": Activar para ordenar la columna de manera descendente"
           }
         }
       });
@@ -2995,7 +3063,6 @@ toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
       this.enviando = "true";
       axios.post("/api/producto/", this.form).then(function (res) {
         toastr__WEBPACK_IMPORTED_MODULE_0___default.a.success("Se creó  correctamente");
-        console.log(res.data);
         _this2.form = {
           nombres: ""
         };
@@ -55087,7 +55154,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", {}, [
     _c("section", { staticClass: "content-header" }, [
-      _c("h1", [_vm._v("Crear Paquete")]),
+      _c("h1", [_vm._v("Crear Envio")]),
       _vm._v(" "),
       _c("ol", { staticClass: "breadcrumb" }, [
         _c(
@@ -55106,7 +55173,7 @@ var render = function() {
           [
             _c("router-link", { attrs: { to: "/paquete-index" } }, [
               _c("i", { staticClass: "fa fa-book" }),
-              _vm._v("Mis Paquetes\n        ")
+              _vm._v("Mis Envios\n        ")
             ])
           ],
           1
@@ -55154,6 +55221,34 @@ var render = function() {
                           required: "",
                           placeholder: "Ingresar nombres"
                         },
+                        domProps: { value: _vm.form.nombre },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "nombre", $event.target.value)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group col-md-6" }, [
+                      _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+                        _vm._v("Guia")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.nombre,
+                            expression: "form.nombre"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { required: "", placeholder: "Ingresar guia" },
                         domProps: { value: _vm.form.nombre },
                         on: {
                           input: function($event) {
@@ -55317,34 +55412,6 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group col-md-6" }, [
                       _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-                        _vm._v("Articulo")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.articulo,
-                            expression: "form.articulo"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "text", placeholder: "Ingrese barrio" },
-                        domProps: { value: _vm.form.articulo },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.form, "articulo", $event.target.value)
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group col-md-6" }, [
-                      _c("label", { attrs: { for: "exampleInputPassword1" } }, [
                         _vm._v("Valor")
                       ]),
                       _vm._v(" "),
@@ -55415,6 +55482,193 @@ var render = function() {
                 _c("div", { staticClass: "box box-info" }, [
                   _vm._m(2),
                   _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-12" }, [
+                    _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+                      _vm._v("Bodega origen")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.bodega,
+                            expression: "form.bodega"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { required: "" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.form,
+                              "bodega",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("Seleccione...")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Cartagena" } }, [
+                          _vm._v("Cartagena")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Bogota" } }, [
+                          _vm._v("Bogota")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Barranquilla" } }, [
+                          _vm._v("Barranquilla")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Medellin" } }, [
+                          _vm._v("Medellin")
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-12" }, [
+                    _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+                      _vm._v("Producto")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.bodega,
+                            expression: "form.bodega"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { required: "" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.form,
+                              "bodega",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("Seleccione...")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Cartagena" } }, [
+                          _vm._v("Cartagena")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Bogota" } }, [
+                          _vm._v("Bogota")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Barranquilla" } }, [
+                          _vm._v("Barranquilla")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Medellin" } }, [
+                          _vm._v("Medellin")
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-12" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Cantidad")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.valor,
+                          expression: "form.valor"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "number",
+                        onkeyup:
+                          "javascript:this.value = this.value.replace(/[.,,]/,'');",
+                        placeholder: "Ingrese barrio"
+                      },
+                      domProps: { value: _vm.form.valor },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "valor", $event.target.value)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-12" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Fecha de entrega")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.fecha_pago,
+                          expression: "form.fecha_pago"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "date", required: "" },
+                      domProps: { value: _vm.form.fecha_pago },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "fecha_pago", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Informacion sobre la fecha")])
+                  ]),
+                  _vm._v(" "),
                   _c("div", { staticClass: "box-footer" }, [
                     _c(
                       "button",
@@ -55461,7 +55715,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "box-header with-border" }, [
-      _c("h3", { staticClass: "box-title" }, [_vm._v("Acción")])
+      _c("h3", { staticClass: "box-title" }, [_vm._v("Detalle del producto")])
     ])
   }
 ]
@@ -56092,16 +56346,17 @@ var render = function() {
   return _c("div", {}, [
     _c("section", { staticClass: "content-header" }, [
       _c("h1", [
-        _vm._v("\n    Listado\n    "),
-        _c("small", [_vm._v("Paquetes")]),
+        _vm._v("\n      Listado\n      "),
+        _c("small", [_vm._v("Envios")]),
         _vm._v(" "),
         _c("br"),
+        _vm._v(" "),
         _c("br"),
         _vm._v(" "),
         _c(
           "button",
           {
-            staticClass: " btn btn-primary btn-sm",
+            staticClass: "btn btn-primary btn-sm",
             attrs: { type: "button", name: "button" },
             on: {
               click: function($event) {
@@ -56115,7 +56370,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: " btn btn-primary btn-sm",
+            staticClass: "btn btn-primary btn-sm",
             attrs: { type: "button", name: "button" },
             on: {
               click: function($event) {
@@ -56129,7 +56384,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: " btn btn-primary btn-sm",
+            staticClass: "btn btn-primary btn-sm",
             attrs: { type: "button", name: "button" },
             on: {
               click: function($event) {
@@ -56143,7 +56398,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: " btn btn-primary btn-sm",
+            staticClass: "btn btn-primary btn-sm",
             attrs: { type: "button", name: "button" },
             on: {
               click: function($event) {
@@ -56157,7 +56412,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: " btn btn-primary btn-sm",
+            staticClass: "btn btn-primary btn-sm",
             attrs: { type: "button", name: "button" },
             on: {
               click: function($event) {
@@ -56171,7 +56426,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: " btn btn-primary btn-sm",
+            staticClass: "btn btn-primary btn-sm",
             attrs: { type: "button", name: "button" },
             on: {
               click: function($event) {
@@ -56189,7 +56444,7 @@ var render = function() {
           [
             _c("router-link", { attrs: { to: "#" } }, [
               _c("i", { staticClass: "fa fa-dashboard" }),
-              _vm._v(" Dashboard\n      ")
+              _vm._v(" Dashboard\n        ")
             ])
           ],
           1
@@ -56209,7 +56464,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("li", { staticClass: "active" }, [
       _c("i", { staticClass: "fa fa-book" }),
-      _vm._v("Index")
+      _vm._v("Index\n      ")
     ])
   },
   function() {

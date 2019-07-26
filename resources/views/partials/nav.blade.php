@@ -19,7 +19,7 @@
         <ul class="treeview-menu">
             <li>
                 <router-link to="/paquete-index"
-                    ><i class="fa fa-eye"></i> Mis envios</router-link
+                    ><i class="fa fa-eye"></i>Lista</router-link
                 >
             </li>
             <li>

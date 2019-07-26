@@ -168,8 +168,6 @@ export default {
         .post("/api/producto/", this.form)
         .then(res => {
           toastr.success("Se creó  correctamente");
-          console.log(res.data);
-
           this.form = {
             nombres: ""
           };
