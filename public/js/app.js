@@ -2451,6 +2451,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
   closeButton: true,
@@ -2533,27 +2537,6 @@ toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! toastr */ "./node_modules/toastr/toastr.js");
 /* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(toastr__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -55332,7 +55315,8 @@ var render = function() {
                         staticClass: "form-control",
                         attrs: {
                           type: "text",
-                          placeholder: "Ingresar Tel/Cel"
+                          placeholder: "Ingresar Tel/Cel",
+                          required: ""
                         },
                         domProps: { value: _vm.form.tel },
                         on: {
@@ -55392,7 +55376,11 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control",
-                        attrs: { type: "text", placeholder: "Ingresar ciudad" },
+                        attrs: {
+                          type: "text",
+                          placeholder: "Ingresar ciudad",
+                          required: ""
+                        },
                         domProps: { value: _vm.form.ciudad },
                         on: {
                           input: function($event) {
@@ -55422,7 +55410,8 @@ var render = function() {
                         staticClass: "form-control",
                         attrs: {
                           type: "text",
-                          placeholder: "Ingrese dirección"
+                          placeholder: "Ingrese dirección",
+                          required: ""
                         },
                         domProps: { value: _vm.form.direccion },
                         on: {
@@ -55451,7 +55440,11 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control",
-                        attrs: { type: "text", placeholder: "Ingrese barrio" },
+                        attrs: {
+                          type: "text",
+                          placeholder: "Ingrese barrio",
+                          required: ""
+                        },
                         domProps: { value: _vm.form.barrio },
                         on: {
                           input: function($event) {
@@ -55949,6 +55942,34 @@ var render = function() {
                   _c("div", { staticClass: "box-body" }, [
                     _c("div", { staticClass: "form-group col-md-6" }, [
                       _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+                        _vm._v("Numero de guia")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.id,
+                            expression: "form.id"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { disabled: "" },
+                        domProps: { value: _vm.form.id },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "id", $event.target.value)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group col-md-6" }, [
+                      _c("label", { attrs: { for: "exampleInputEmail1" } }, [
                         _vm._v("Nombre")
                       ]),
                       _vm._v(" "),
@@ -55962,10 +55983,7 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control",
-                        attrs: {
-                          disabled: !_vm.editar,
-                          placeholder: "Ingresar nombres"
-                        },
+                        attrs: { disabled: !_vm.editar },
                         domProps: { value: _vm.form.nombre },
                         on: {
                           input: function($event) {
@@ -56143,6 +56161,64 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group col-md-6" }, [
+                      _c("label", [_vm._v("Bodega")]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.bodega,
+                              expression: "form.bodega"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { disabled: !_vm.editar },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.form,
+                                "bodega",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", [_vm._v(_vm._s(_vm.form.bodega))]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Cartagena" } }, [
+                            _vm._v("Cartagena")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Bogota" } }, [
+                            _vm._v("Bogota")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Barranquilla" } }, [
+                            _vm._v("Barranquilla")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Medellin" } }, [
+                            _vm._v("Medellin")
+                          ])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group col-md-6" }, [
                       _c("label", { attrs: { for: "exampleInputPassword1" } }, [
                         _vm._v("Articulo")
                       ]),
@@ -56191,7 +56267,7 @@ var render = function() {
                         staticClass: "form-control",
                         attrs: {
                           type: "text",
-                          disabled: "",
+                          disabled: !_vm.editar,
                           placeholder: "Ingrese producto"
                         },
                         domProps: { value: _vm.form.cantidad },
@@ -56412,44 +56488,6 @@ var staticRenderFns = [
             _c("ul", { staticClass: "timeline" }, [
               _c("li", { staticClass: "time-label" }, [
                 _c("span", { staticClass: "bg-red" }, [_vm._v("HISTORIAL")])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("i", { staticClass: "fa fa-envelope bg-blue" }),
-                _vm._v(" "),
-                _c("div", { staticClass: "timeline-item" }, [
-                  _c("span", { staticClass: "time" }, [
-                    _c("i", { staticClass: "fa fa-clock-o" }),
-                    _vm._v(" 12:05\n                        ")
-                  ]),
-                  _vm._v(" "),
-                  _c("h3", { staticClass: "timeline-header" }, [
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("Asunto")])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "timeline-body" }, [
-                    _vm._v("DESCRIPCION...")
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("i", { staticClass: "fa fa-envelope bg-blue" }),
-                _vm._v(" "),
-                _c("div", { staticClass: "timeline-item" }, [
-                  _c("span", { staticClass: "time" }, [
-                    _c("i", { staticClass: "fa fa-clock-o" }),
-                    _vm._v(" 12:05\n                        ")
-                  ]),
-                  _vm._v(" "),
-                  _c("h3", { staticClass: "timeline-header" }, [
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("Asunto")])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "timeline-body" }, [
-                    _vm._v("DESCRIPCION...")
-                  ])
-                ])
               ]),
               _vm._v(" "),
               _c("li", [

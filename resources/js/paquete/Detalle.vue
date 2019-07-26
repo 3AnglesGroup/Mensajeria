@@ -35,13 +35,12 @@
                 <!-- form start -->
                 <div class="box-body">
                   <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Numero de guia</label>
+                    <input v-model="form.id" disabled class="form-control" />
+                  </div>
+                  <div class="form-group col-md-6">
                     <label for="exampleInputEmail1">Nombre</label>
-                    <input
-                      v-model="form.nombre"
-                      :disabled="!editar"
-                      class="form-control"
-                      placeholder="Ingresar nombres"
-                    />
+                    <input v-model="form.nombre" :disabled="!editar" class="form-control" />
                   </div>
 
                   <!-- <div class="form-group col-md-6">
@@ -101,6 +100,16 @@
                     />
                   </div>
                   <div class="form-group col-md-6">
+                    <label>Bodega</label>
+                    <select :disabled="!editar" v-model="form.bodega" class="form-control">
+                      <option>{{form.bodega}}</option>
+                      <option value="Cartagena">Cartagena</option>
+                      <option value="Bogota">Bogota</option>
+                      <option value="Barranquilla">Barranquilla</option>
+                      <option value="Medellin">Medellin</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6">
                     <label for="exampleInputPassword1">Articulo</label>
                     <input
                       type="text"
@@ -115,7 +124,7 @@
                     <input
                       type="text"
                       class="form-control"
-                      disabled
+                      :disabled="!editar"
                       v-model="form.cantidad"
                       placeholder="Ingrese producto"
                     />
@@ -184,36 +193,6 @@
                       </li>
                       <!-- /.timeline-label -->
                       <!-- timeline item -->
-                      <li>
-                        <i class="fa fa-envelope bg-blue"></i>
-
-                        <div class="timeline-item">
-                          <span class="time">
-                            <i class="fa fa-clock-o"></i> 12:05
-                          </span>
-
-                          <h3 class="timeline-header">
-                            <a href="#">Asunto</a>
-                          </h3>
-
-                          <div class="timeline-body">DESCRIPCION...</div>
-                        </div>
-                      </li>
-                      <li>
-                        <i class="fa fa-envelope bg-blue"></i>
-
-                        <div class="timeline-item">
-                          <span class="time">
-                            <i class="fa fa-clock-o"></i> 12:05
-                          </span>
-
-                          <h3 class="timeline-header">
-                            <a href="#">Asunto</a>
-                          </h3>
-
-                          <div class="timeline-body">DESCRIPCION...</div>
-                        </div>
-                      </li>
                       <li>
                         <i class="fa fa-envelope bg-blue"></i>
 

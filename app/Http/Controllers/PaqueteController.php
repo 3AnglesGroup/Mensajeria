@@ -37,6 +37,7 @@ class PaqueteController extends Controller
         $paquete->valor = $request->valor;
         $paquete->modo = $request->modo;
         $paquete->total = $request->valor * $request->cantidad;
+        $paquete->bodega = $request->bodega;
         $paquete->save();
 
         return 200;

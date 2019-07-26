@@ -56,6 +56,7 @@
                       class="form-control"
                       v-model="form.tel"
                       placeholder="Ingresar Tel/Cel"
+                      required
                     />
                   </div>
                   <div class="form-group col-md-6">
@@ -75,6 +76,7 @@
                       class="form-control"
                       v-model="form.ciudad"
                       placeholder="Ingresar ciudad"
+                      required
                     />
                   </div>
                   <div class="form-group col-md-6">
@@ -84,6 +86,7 @@
                       class="form-control"
                       v-model="form.direccion"
                       placeholder="Ingrese dirección"
+                      required
                     />
                   </div>
                   <div class="form-group col-md-6">
@@ -93,6 +96,7 @@
                       class="form-control"
                       v-model="form.barrio"
                       placeholder="Ingrese barrio"
+                      required
                     />
                   </div>
 
