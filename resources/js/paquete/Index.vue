@@ -11,37 +11,25 @@
           v-on:click="getTitular(3)"
           class="btn btn-primary btn-sm"
           name="button"
-        >EN TRANCITO</button>
+        >EN VERIFICACIÓN</button>
         <button
           type="button"
           v-on:click="getTitular(3)"
           class="btn btn-primary btn-sm"
           name="button"
-        >PROGRAMADOS</button>
+        >PROGRAMADO</button>
+        <button
+          type="button"
+          v-on:click="getTitular(3)"
+          class="btn btn-primary btn-sm"
+          name="button"
+        >DESPACHADO</button>
         <button
           type="button"
           v-on:click="getTitular(2)"
           class="btn btn-primary btn-sm"
           name="button"
         >ENTREGADOS</button>
-        <button
-          type="button"
-          v-on:click="getTitular(1)"
-          class="btn btn-primary btn-sm"
-          name="button"
-        >CANCELADOS</button>
-        <button
-          type="button"
-          v-on:click="getTitular(1)"
-          class="btn btn-primary btn-sm"
-          name="button"
-        >RE-PROGRAMADOS</button>
-        <button
-          type="button"
-          v-on:click="getTitular(1)"
-          class="btn btn-primary btn-sm"
-          name="button"
-        >EN BODEGA</button>
       </h1>
       <ol class="breadcrumb">
         <li>
@@ -58,7 +46,7 @@
     <section class="content container-fluid">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">Listado de Titulares</h3>
+          <h3 class="box-title">Listado de envios</h3>
           <br />
         </div>
         <!-- /.box-header -->
@@ -67,10 +55,11 @@
             <thead>
               <tr>
                 <th>ESTADO</th>
-                <th>NOMBRE</th>
+                <th>RECIBE</th>
                 <th>TELÉFONO</th>
                 <th>CIUDAD</th>
                 <th>ARTICULO</th>
+                <th>CANTIDAD</th>
                 <th>VALOR</th>
                 <th>ACCION</th>
               </tr>
@@ -96,7 +85,8 @@ export default {
           { data: "nombre" },
           { data: "telefono" },
           { data: "ciudad" },
-          { data: "articulo" },
+          { data: "producto" },
+          { data: "cantidad" },
           { data: "valor" },
           { data: "btn" }
         ],

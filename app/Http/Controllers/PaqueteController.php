@@ -23,17 +23,19 @@ class PaqueteController extends Controller
 
     public function crear(Request $request){
         $paquete = new Paquete();
-        $paquete->estado = 'EN TRANCITO';
+        $paquete->estado = 'VERIFICACION';
         $paquete->nombre = $request->nombre;
         $paquete->telefono = $request->tel;
         $paquete->telefono_alternativo = $request->tel_alt;
         $paquete->ciudad = $request->ciudad;
         $paquete->direccion = $request->direccion;
         $paquete->barrio = $request->barrio;
-        $paquete->producto = $request->producto;
+        $paquete->cliente = $request->cliente;
         $paquete->observacion = $request->observacion;
+        $paquete->producto = $request->producto;
         $paquete->cantidad = $request->cantidad;
         $paquete->valor = $request->valor;
+        $paquete->modo = $request->modo;
         $paquete->total = $request->valor * $request->cantidad;
         $paquete->save();
 

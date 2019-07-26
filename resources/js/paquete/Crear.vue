@@ -149,7 +149,11 @@
                   <label for="exampleInputEmail1">Producto</label>
                   <select class="form-control" v-model="form.producto" required>
                     <option value>Seleccione...</option>
-                    <option v-for="producto in productos" :key="producto.id" value>
+                    <option
+                      v-for="producto in productos"
+                      :key="producto.id"
+                      :value="producto.nombre"
+                    >
                       {{producto.nombre}} -
                       <span>Disponible: {{producto.cantidad}}</span>
                     </option>
