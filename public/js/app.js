@@ -2438,6 +2438,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
   closeButton: true,
@@ -2456,6 +2457,7 @@ toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
         nombre: "",
         tel: "",
         tel_alt: "",
+        bodega: "",
         ciudad: "",
         direccion: "",
         barrio: "",
@@ -55537,23 +55539,31 @@ var render = function() {
                           }
                         }
                       },
-                      _vm._l(_vm.productos, function(producto) {
-                        return _c(
-                          "option",
-                          { key: producto.id, attrs: { value: "" } },
-                          [
-                            _vm._v(
-                              "\n                    " +
-                                _vm._s(producto.nombre) +
-                                " -\n                    "
-                            ),
-                            _c("span", [
-                              _vm._v("Disponible: " + _vm._s(producto.cantidad))
-                            ])
-                          ]
-                        )
-                      }),
-                      0
+                      [
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("Seleccione...")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.productos, function(producto) {
+                          return _c(
+                            "option",
+                            { key: producto.id, attrs: { value: "" } },
+                            [
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(producto.nombre) +
+                                  " -\n                    "
+                              ),
+                              _c("span", [
+                                _vm._v(
+                                  "Disponible: " + _vm._s(producto.cantidad)
+                                )
+                              ])
+                            ]
+                          )
+                        })
+                      ],
+                      2
                     )
                   ]),
                   _vm._v(" "),

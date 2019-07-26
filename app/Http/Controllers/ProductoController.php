@@ -39,7 +39,7 @@ class ProductoController extends Controller
     }
 
     public function productosBodega($bodega){
-        return Producto::where('bodega',$bodega)->get();
+        return Producto::where('bodega',$bodega)->where('cantidad', '>', 1)->get();
 
     }
 }

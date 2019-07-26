@@ -140,6 +140,7 @@
                 <div class="form-group col-md-12">
                   <label for="exampleInputEmail1">Producto</label>
                   <select class="form-control" v-model="form.producto" required>
+                    <option value>Seleccione...</option>
                     <option v-for="producto in productos" :key="producto.id" value>
                       {{producto.nombre}} -
                       <span>Disponible: {{producto.cantidad}}</span>
@@ -232,6 +233,7 @@ export default {
         nombre: "",
         tel: "",
         tel_alt: "",
+        bodega: "",
         ciudad: "",
         direccion: "",
         barrio: "",
