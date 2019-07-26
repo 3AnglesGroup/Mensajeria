@@ -22,7 +22,7 @@ class CreateProductosTable extends Migration
             $table->string('bodega')->nullable();
             $table->string('cantidad')->nullable();
             $table->string('detalle')->nullable();
-            $table->string('ficha')->nullable();
+            $table->text('ficha')->nullable();
             $table->string('fecha_entrada')->nullable();
 
             $table->integer('cliente_id')->unsigned()->nullable();
