@@ -96,16 +96,6 @@
                     />
                   </div>
 
-                  <div class="form-group col-md-6">
-                    <label for="exampleInputPassword1">Valor</label>
-                    <input
-                      type="number"
-                      class="form-control"
-                      v-model="form.valor"
-                      onkeyup="javascript:this.value = this.value.replace(/[.,,]/,'');"
-                      placeholder="Ingrese valor a cobrar"
-                    />
-                  </div>
                   <!-- <div class="form-group col-md-6">
                   <label>Estado</label>
                   <select class="form-control"  v-model="form.tiempo" >
@@ -161,10 +151,31 @@
                   <label for="exampleInputPassword1">Cantidad</label>
                   <input
                     type="number"
+                    min="0"
                     class="form-control"
                     v-model="form.cantidad"
                     onkeyup="javascript:this.value = this.value.replace(/[.,,]/,'');"
                     placeholder="Ingrese barrio"
+                  />
+                </div>
+
+                <div class="form-group col-md-12">
+                  <label for="exampleInputPassword1">Valor</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    v-model="form.valor"
+                    onkeyup="javascript:this.value = this.value.replace(/[.,,]/,'');"
+                    placeholder="Ingrese valor a cobrar"
+                  />
+                </div>
+                <div class="form-group col-md-12">
+                  <label for="exampleInputPassword1">Total</label>
+                  <input
+                    type="number"
+                    disabled
+                    class="form-control"
+                    :value="form.cantidad * form.valor"
                   />
                 </div>
 
@@ -216,6 +227,7 @@ export default {
     return {
       enviando: false,
       productos: [],
+
       form: {
         nombre: "",
         tel: "",
@@ -227,6 +239,7 @@ export default {
         fecha_salida: "",
         fecha_entrega: "",
         articulo: "",
+        cantidad: "0",
         valor: "",
         producto: ""
       }

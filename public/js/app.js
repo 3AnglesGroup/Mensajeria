@@ -2427,6 +2427,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
   closeButton: true,
@@ -2452,6 +2463,7 @@ toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
         fecha_salida: "",
         fecha_entrega: "",
         articulo: "",
+        cantidad: "0",
         valor: "",
         producto: ""
       }
@@ -55381,39 +55393,6 @@ var render = function() {
                       })
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "form-group col-md-6" }, [
-                      _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-                        _vm._v("Valor")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.valor,
-                            expression: "form.valor"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "number",
-                          onkeyup:
-                            "javascript:this.value = this.value.replace(/[.,,]/,'');",
-                          placeholder: "Ingrese valor a cobrar"
-                        },
-                        domProps: { value: _vm.form.valor },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.form, "valor", $event.target.value)
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
                     _c("div", { staticClass: "form-group col-md-12" }, [
                       _c("label", { attrs: { for: "exampleInputPassword1" } }, [
                         _vm._v("Observación")
@@ -55595,6 +55574,7 @@ var render = function() {
                       staticClass: "form-control",
                       attrs: {
                         type: "number",
+                        min: "0",
                         onkeyup:
                           "javascript:this.value = this.value.replace(/[.,,]/,'');",
                         placeholder: "Ingrese barrio"
@@ -55608,6 +55588,51 @@ var render = function() {
                           _vm.$set(_vm.form, "cantidad", $event.target.value)
                         }
                       }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-12" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Valor")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.valor,
+                          expression: "form.valor"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "number",
+                        onkeyup:
+                          "javascript:this.value = this.value.replace(/[.,,]/,'');",
+                        placeholder: "Ingrese valor a cobrar"
+                      },
+                      domProps: { value: _vm.form.valor },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "valor", $event.target.value)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-12" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Total")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: { type: "number", disabled: "" },
+                      domProps: { value: _vm.form.cantidad * _vm.form.valor }
                     })
                   ]),
                   _vm._v(" "),
