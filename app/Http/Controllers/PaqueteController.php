@@ -25,15 +25,16 @@ class PaqueteController extends Controller
         $paquete = new Paquete();
         $paquete->estado = 'EN TRANCITO';
         $paquete->nombre = $request->nombre;
-        $paquete->telefono = $request->telefono;
+        $paquete->telefono = $request->tel;
+        $paquete->telefono_alternativo = $request->tel_alt;
         $paquete->ciudad = $request->ciudad;
         $paquete->direccion = $request->direccion;
         $paquete->barrio = $request->barrio;
+        $paquete->producto = $request->producto;
         $paquete->observacion = $request->observacion;
-        $paquete->fecha_salida = $request->fecha_salida;
-        $paquete->fecha_entrega = $request->fecha_entrega;
-        $paquete->articulo = $request->articulo;
+        $paquete->cantidad = $request->cantidad;
         $paquete->valor = $request->valor;
+        $paquete->total = $request->valor * $request->cantidad;
         $paquete->save();
 
         return 200;

@@ -22,12 +22,11 @@ class CreatePaquetesTable extends Migration
             $table->string('telefono_alternativo')->nullable();
             $table->string('direccion')->nullable();
             $table->string('barrio')->nullable();
-            $table->string('articulo')->nullable();
+            $table->string('producto')->nullable();
             $table->string('cantidad')->nullable();
             $table->string('valor')->nullable();
+            $table->string('total')->nullable();
             $table->string('ciudad')->nullable();
-            $table->string('fecha_salida')->nullable();
-            $table->string('fecha_entrega')->nullable();
             $table->text('observacion')->nullable();
             $table->timestamps();
         });

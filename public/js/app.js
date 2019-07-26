@@ -2457,17 +2457,14 @@ toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
         nombre: "",
         tel: "",
         tel_alt: "",
-        bodega: "",
         ciudad: "",
         direccion: "",
         barrio: "",
         observacion: "",
-        fecha_salida: "",
-        fecha_entrega: "",
-        articulo: "",
+        bodega: "",
+        producto: "",
         cantidad: "0",
-        valor: "",
-        producto: ""
+        valor: ""
       }
     };
   },
@@ -2476,7 +2473,7 @@ toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
     getProductos: function getProductos() {
       var _this = this;
 
-      axios.get("api/productos-bodega/" + this.form.bodega).then(function (res) {
+      axios.get("/api/productos-bodega/" + this.form.bodega).then(function (res) {
         _this.productos = res.data;
         console.log(res.data);
       });

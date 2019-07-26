@@ -233,24 +233,21 @@ export default {
         nombre: "",
         tel: "",
         tel_alt: "",
-        bodega: "",
         ciudad: "",
         direccion: "",
         barrio: "",
         observacion: "",
-        fecha_salida: "",
-        fecha_entrega: "",
-        articulo: "",
+        bodega: "",
+        producto: "",
         cantidad: "0",
-        valor: "",
-        producto: ""
+        valor: ""
       }
     };
   },
   created() {},
   methods: {
     getProductos() {
-      axios.get("api/productos-bodega/" + this.form.bodega).then(res => {
+      axios.get("/api/productos-bodega/" + this.form.bodega).then(res => {
         this.productos = res.data;
         console.log(res.data);
       });
