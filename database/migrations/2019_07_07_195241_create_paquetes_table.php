@@ -26,6 +26,9 @@ class CreatePaquetesTable extends Migration
             $table->string('cantidad')->nullable();
             $table->string('valor')->nullable();
             $table->string('total')->nullable();
+            $table->string('modo')->nullable();
+            $table->string('cliente')->nullable();
+            $table->string('bodega')->nullable();
             $table->string('ciudad')->nullable();
             $table->text('observacion')->nullable();
             $table->timestamps();

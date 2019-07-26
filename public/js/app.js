@@ -2439,6 +2439,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
   closeButton: true,
@@ -2453,6 +2461,7 @@ toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
     return {
       enviando: false,
       productos: [],
+      clientes: [],
       form: {
         nombre: "",
         tel: "",
@@ -2460,36 +2469,47 @@ toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
         ciudad: "",
         direccion: "",
         barrio: "",
+        modo: "",
         observacion: "",
+        cliente: "",
         bodega: "",
         producto: "",
         cantidad: "0",
-        valor: ""
+        valor: "0"
       }
     };
   },
-  created: function created() {},
+  created: function created() {
+    this.getClientes();
+  },
   methods: {
-    getProductos: function getProductos() {
+    getClientes: function getClientes() {
       var _this = this;
 
+      axios.get("/api/clientes").then(function (res) {
+        _this.clientes = res.data.data;
+      });
+    },
+    getProductos: function getProductos() {
+      var _this2 = this;
+
       axios.get("/api/productos-bodega/" + this.form.bodega).then(function (res) {
-        _this.productos = res.data;
+        _this2.productos = res.data;
         console.log(res.data);
       });
     },
     crearPaquete: function crearPaquete() {
-      var _this2 = this;
+      var _this3 = this;
 
       this.enviando = "true";
       axios.post("/api/paquete", this.form).then(function (res) {
         toastr__WEBPACK_IMPORTED_MODULE_0___default.a.success("Se creó el paquete correctamente");
-        _this2.form = {
+        _this3.form = {
           nombres: ""
         };
-        _this2.enviando = false;
+        _this3.enviando = false;
       })["catch"](function (error) {
-        _this2.enviando = false;
+        _this3.enviando = false;
         toastr__WEBPACK_IMPORTED_MODULE_0___default.a.error("Error al subir el paquete, Intenta nuevamente o comunicate con Soporte");
       });
     }
@@ -55392,6 +55412,57 @@ var render = function() {
                       })
                     ]),
                     _vm._v(" "),
+                    _c("div", { staticClass: "form-group col-md-6" }, [
+                      _c("label", [_vm._v("Modalidad de pago")]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.modo,
+                              expression: "form.modo"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.form,
+                                "modo",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("Seleccione...")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Contraentrega" } }, [
+                            _vm._v("Contraentrega")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Anticipado" } }, [
+                            _vm._v("Anticipado")
+                          ])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
                     _c("div", { staticClass: "form-group col-md-12" }, [
                       _c("label", { attrs: { for: "exampleInputPassword1" } }, [
                         _vm._v("Observación")
@@ -55430,6 +55501,59 @@ var render = function() {
               _c("div", { staticClass: "col-md-5" }, [
                 _c("div", { staticClass: "box box-info" }, [
                   _vm._m(2),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-12" }, [
+                    _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+                      _vm._v("Propietario")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.cliente,
+                            expression: "form.cliente"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { required: "" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.form,
+                              "cliente",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("Seleccione...")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.clientes, function(cliente) {
+                          return _c("option", { key: cliente.id }, [
+                            _vm._v(_vm._s(cliente.razon_social))
+                          ])
+                        })
+                      ],
+                      2
+                    )
+                  ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group col-md-12" }, [
                     _c("label", { attrs: { for: "exampleInputEmail1" } }, [
@@ -55598,38 +55722,42 @@ var render = function() {
                     })
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group col-md-12" }, [
-                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-                      _vm._v("Valor")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.valor,
-                          expression: "form.valor"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "number",
-                        onkeyup:
-                          "javascript:this.value = this.value.replace(/[.,,]/,'');",
-                        placeholder: "Ingrese valor a cobrar"
-                      },
-                      domProps: { value: _vm.form.valor },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                  _vm.form.modo == "Contraentrega"
+                    ? _c("div", { staticClass: "form-group col-md-12" }, [
+                        _c(
+                          "label",
+                          { attrs: { for: "exampleInputPassword1" } },
+                          [_vm._v("Valor")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.valor,
+                              expression: "form.valor"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "number",
+                            onkeyup:
+                              "javascript:this.value = this.value.replace(/[.,,]/,'');",
+                            placeholder: "Ingrese valor a cobrar"
+                          },
+                          domProps: { value: _vm.form.valor },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.form, "valor", $event.target.value)
+                            }
                           }
-                          _vm.$set(_vm.form, "valor", $event.target.value)
-                        }
-                      }
-                    })
-                  ]),
+                        })
+                      ])
+                    : _vm._e(),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group col-md-12" }, [
                     _c("label", { attrs: { for: "exampleInputPassword1" } }, [

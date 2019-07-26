@@ -96,14 +96,14 @@
                     />
                   </div>
 
-                  <!-- <div class="form-group col-md-6">
-                  <label>Estado</label>
-                  <select class="form-control"  v-model="form.tiempo" >
-                    <option  value="">Seleccione...</option>
-                    <option value="6" >6 Meses</option>
-                    <option value="12" >1 Año</option>
-                  </select>
-                  </div>-->
+                  <div class="form-group col-md-6">
+                    <label>Modalidad de pago</label>
+                    <select class="form-control" v-model="form.modo">
+                      <option value>Seleccione...</option>
+                      <option value="Contraentrega">Contraentrega</option>
+                      <option value="Anticipado">Anticipado</option>
+                    </select>
+                  </div>
                   <div class="form-group col-md-12">
                     <label for="exampleInputPassword1">Observación</label>
                     <textarea v-model="form.observacion" class="form-control" rows="5" cols="80"></textarea>
@@ -119,6 +119,14 @@
               <div class="box box-info">
                 <div class="box-header with-border">
                   <h3 class="box-title">Detalle del producto</h3>
+                </div>
+
+                <div class="form-group col-md-12">
+                  <label for="exampleInputEmail1">Propietario</label>
+                  <select class="form-control" v-model="form.cliente" required>
+                    <option value>Seleccione...</option>
+                    <option v-for="cliente in clientes" :key="cliente.id">{{cliente.razon_social}}</option>
+                  </select>
                 </div>
 
                 <div class="form-group col-md-12">
@@ -160,7 +168,7 @@
                   />
                 </div>
 
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-12" v-if="form.modo == 'Contraentrega'">
                   <label for="exampleInputPassword1">Valor</label>
                   <input
                     type="number"
@@ -228,7 +236,7 @@ export default {
     return {
       enviando: false,
       productos: [],
-
+      clientes: [],
       form: {
         nombre: "",
         tel: "",
@@ -236,16 +244,25 @@ export default {
         ciudad: "",
         direccion: "",
         barrio: "",
+        modo: "",
         observacion: "",
+        cliente: "",
         bodega: "",
         producto: "",
         cantidad: "0",
-        valor: ""
+        valor: "0"
       }
     };
   },
-  created() {},
+  created() {
+    this.getClientes();
+  },
   methods: {
+    getClientes() {
+      axios.get("/api/clientes").then(res => {
+        this.clientes = res.data.data;
+      });
+    },
     getProductos() {
       axios.get("/api/productos-bodega/" + this.form.bodega).then(res => {
         this.productos = res.data;
