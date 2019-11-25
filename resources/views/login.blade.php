@@ -33,8 +33,11 @@
     <img style="width:100%" src="img/logo.png" alt="">
     <!-- <a href=""><b>Sotecsis</b>Admin</a> -->
   </div>
+  <div>
+    <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfglRqCFoFEgDxG6pMlUMgik_lcWeczk-Oob18aIplUy5pJhA/viewform">Solicita tu servicio</a>
+  </div>
   <!-- /.login-logo -->
-  <div class="login-box-body">
+ <!--  <div class="login-box-body">
     <p class="login-box-msg">Inicio de Sesión</p>
 
     <form action="{{url('ingresar')}}" method="post">
@@ -49,18 +52,18 @@
       </div>
       <div class="row">
         
-        <!-- /.col -->
+       
         <div class="col-xs-4">
           <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
         </div>
-        <!-- /.col -->
+       
       </div>
-    </form>
+    </form> 
 
     
-    <!-- /.social-auth-links -->
+     /.social-auth-links -->
 
-    
+   
 
   </div>
   <!-- /.login-box-body -->
